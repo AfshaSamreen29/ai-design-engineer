@@ -17,6 +17,15 @@ importers:
         specifier: ^5.9.0
         version: 5.9.3
 
+  packages/skills:
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.5
+      typescript:
+        specifier: ^5.9.0
+        version: 5.9.3
+
 packages:
 
   '@types/node@22.20.5':
