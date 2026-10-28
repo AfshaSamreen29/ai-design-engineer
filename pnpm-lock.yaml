@@ -8,6 +8,22 @@ importers:
 
   .: {}
 
+  packages/cli:
+    dependencies:
+      '@ai-design-engineer/design-tokens':
+        specifier: workspace:*
+        version: link:../design-tokens
+      '@ai-design-engineer/skills':
+        specifier: workspace:*
+        version: link:../skills
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.5
+      typescript:
+        specifier: ^5.9.0
+        version: 5.9.3
+
   packages/design-tokens:
     devDependencies:
       '@types/node':

@@ -5,9 +5,12 @@
   "description": "An independent toolkit for better AI-generated websites, reusable design systems, and browser-based visual quality checks.",
   "license": "MIT",
   "type": "module",
-  "engines": { "node": ">=22.18" },
+  "engines": {
+    "node": ">=22.18"
+  },
   "scripts": {
     "test": "pnpm -r --if-present test",
-    "typecheck": "pnpm -r --if-present typecheck"
+    "typecheck": "pnpm -r --if-present typecheck",
+    "cli": "node packages/cli/src/bin.ts"
   }
 }

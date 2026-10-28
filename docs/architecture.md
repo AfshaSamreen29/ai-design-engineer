@@ -6,7 +6,9 @@ Monorepo managed by pnpm workspaces. Each package has one job and real code.
 
 - `packages/skills`: the bundled `landing-page-design` skill (Markdown only) plus a small helper that parses and lists it. Tests guard its structure.
 
-Planned (not yet built): `packages/cli`, `packages/visual-qa`, `apps/web`.
+- `packages/cli`: the `ai-design-engineer` command. Depends on `design-tokens` (validation, export) and `skills` (the bundled skill). Zero third-party dependencies: a small argument parser, a path-safe file planner (`fsafe.ts`), and one handler per command. All file writes go through one function that plans first, reports, and refuses conflicts, so safety rules live in one place.
+
+Planned (not yet built): `packages/visual-qa`, `apps/web`.
 
 ## Principles
 

@@ -1,0 +1,20 @@
+{
+  "name": "@ai-design-engineer/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "bin": { "ai-design-engineer": "./src/bin.ts" },
+  "scripts": {
+    "test": "node --test \"src/**/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@ai-design-engineer/design-tokens": "workspace:*",
+    "@ai-design-engineer/skills": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0"
+  }
+}

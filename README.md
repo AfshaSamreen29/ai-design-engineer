@@ -2,7 +2,7 @@
 
 An independent, open-source toolkit for better AI-generated websites: reusable design systems, portable design skills for coding agents, and browser-based visual quality checks.
 
-> **Status: early build (Stage 2 of 5).** Only the items marked ✅ below are implemented and verified. Everything else is planned and is **not** available yet.
+> **Status: early build (Stage 3 of 5).** Only the items marked ✅ below are implemented and verified. Everything else is planned and is **not** available yet.
 
 ## Build status
 
@@ -11,7 +11,8 @@ An independent, open-source toolkit for better AI-generated websites: reusable d
 | Monorepo scaffold (pnpm workspaces, strict TypeScript) | ✅ |
 | `@ai-design-engineer/design-tokens`: schema, validation, defaults, JSON/CSS export, contrast hints | ✅ 12 unit tests passing |
 | Original landing-page design skill (`SKILL.md`, 5 references, 2 templates) | ✅ 7 structural tests passing |
-| CLI (`init`, `design`, `tokens export`, `skill install`) | ⏳ Stage 3 |
+| CLI: `init`, `design`, `tokens export`, `skill install` (dry-run, overwrite protection, path-traversal guards) | ✅ 33 tests passing |
+| CLI: `review` | ⏳ Stage 4 (placeholder; exits with code 2) |
 | Visual QA engine (Playwright screenshots + report) | ⏳ Stage 4 |
 | Web app: marketing site, dashboard, design-system editor | ⏳ Stage 5 |
 | Supabase persistence, billing | Deferred (local-first by default) |
@@ -35,13 +36,25 @@ pnpm typecheck     # strict TypeScript
 Or run a single package without pnpm:
 
 ```bash
-cd packages/design-tokens   # or packages/skills
+cd packages/design-tokens   # or packages/skills, packages/cli
 node --test "src/**/*.test.ts"
 ```
 
+## CLI
+
+```bash
+pnpm install
+node packages/cli/src/bin.ts init --name "My Project"
+node packages/cli/src/bin.ts design --name "My Project" --goal "Start a free trial"
+node packages/cli/src/bin.ts tokens export
+node packages/cli/src/bin.ts skill install --dry-run
+```
+
+`pnpm cli <command>` is a shorthand for the first form. Every file-changing command supports `--dry-run` and refuses to overwrite files that differ unless you pass `--force`. Full reference: [docs/cli.md](docs/cli.md). The `review` command is not implemented yet.
+
 ## Landing-page design skill
 
-A portable, dependency-free skill for coding agents lives in `packages/skills/landing-page-design/`. See [docs/design-skills.md](docs/design-skills.md) for contents and manual installation. The CLI installer (`skill install`) is planned for Stage 3. The tests check the skill's structure, not whether it produces good designs.
+A portable, dependency-free skill for coding agents lives in `packages/skills/landing-page-design/`. See [docs/design-skills.md](docs/design-skills.md) for contents and manual installation. Install it with `skill install` (see below). The tests check the skill's structure, not whether it produces good designs.
 
 ## Design tokens package
 
